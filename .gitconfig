@@ -1,0 +1,7 @@
+[credential]
+	helper = store --file ~/.credentials/git-credentials
+[user]
+	email = bradi@thresholdagency.com
+	name = Brad I
+[core]
+	editor = vim
