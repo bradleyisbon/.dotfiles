@@ -14,12 +14,23 @@ Plug 'hrsh7th/nvim-cmp'
 " i believe hrsh7th/nvim-cmp uses hrsh7th/cmp-nvim-lsp to talk to the LSP.
 " whatever it does, it makes completions work
 Plug 'hrsh7th/cmp-nvim-lsp'
+" used for signature hover
+Plug 'glepnir/lspsaga.nvim'
+" maximizes/demaximizes selected window
+Plug 'szw/vim-maximizer'
+" file explorer
 Plug 'scrooloose/nerdtree'
+" <Leader> s quick motions
 Plug 'easymotion/vim-easymotion'
+" Add parens and other surrounding punctuation
 Plug 'tpope/vim-surround'
+" Git interface
 Plug 'tpope/vim-fugitive'
+" Highlight last yank
 Plug 'machakann/vim-highlightedyank'
+" Code highlighting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Fixes python indents
 Plug 'Vimjas/vim-python-pep8-indent'
 call plug#end()
 
@@ -67,7 +78,13 @@ EOF
 nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
 " Press K to hover in normal mode
-nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> <C-K> <cmd>lua vim.lsp.buf.hover()<CR>
+inoremap <silent> <C-K> <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> <space>rn <cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap <silent> mm :MaximizerToggle<CR>
+
+" show function signature on hover
+autocmd CursorHoldI * silent!       :Lspsaga signature_help
 
 "show relative line numbers by default
 set rnu
@@ -96,6 +113,9 @@ augroup nerdtree_open
     autocmd!
     autocmd VimEnter * NERDTree
 augroup END
+
+" show hidden files by default in NERDtree
+let g:NERDTreeShowHidden=1
 
 let g:vimspector_enable_mappings = 'HUMAN'
 
