@@ -14,3 +14,5 @@ eval "$(pyenv init -)"
 eval "$(direnv hook zsh)"
 bindkey -v
 bindkey "^R" history-incremental-search-backward
+
+alias oj="cd ~/Projects/optimizer-backend/optimizer-jobs && poetry shell"

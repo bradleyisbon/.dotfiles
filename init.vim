@@ -4,7 +4,9 @@ Plug 'neomake/neomake'
 " use vim-commentary to comment stuff out
 Plug 'tpope/vim-commentary'
 " use nvim-gdb as the best of all bad debuggers
-Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
+"Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
+Plug 'mfussenegger/nvim-dap'
+Plug 'mfussenegger/nvim-dap-python'
 " use auto-pairs to insert and delete pairs of brackets, parens, and quotes
 Plug 'jiangmiao/auto-pairs'
 " launch and initialize language servers
@@ -14,7 +16,7 @@ Plug 'hrsh7th/nvim-cmp'
 " i believe hrsh7th/nvim-cmp uses hrsh7th/cmp-nvim-lsp to talk to the LSP.
 " whatever it does, it makes completions work
 Plug 'hrsh7th/cmp-nvim-lsp'
-" used for signature hover
+" used for signature hover - doesn't work with neovim 0.5.1
 Plug 'glepnir/lspsaga.nvim'
 " maximizes/demaximizes selected window
 Plug 'szw/vim-maximizer'
@@ -73,6 +75,9 @@ vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 require'nvim-treesitter.configs'.setup {
     highlight = { enable = true },
   }
+
+-- python debugger
+require('dap-python').setup('~/Envs/debugpy/bin/python')
 EOF
 
 nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
@@ -82,6 +87,17 @@ nnoremap <silent> <C-K> <cmd>lua vim.lsp.buf.hover()<CR>
 inoremap <silent> <C-K> <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> <space>rn <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <silent> mm :MaximizerToggle<CR>
+
+" from :help dap-mappings
+nnoremap <silent> <F5> :lua require'dap'.continue()<CR>
+nnoremap <silent> <F10> :lua require'dap'.step_over()<CR>
+nnoremap <silent> <F11> :lua require'dap'.step_into()<CR>
+nnoremap <silent> <F12> :lua require'dap'.step_out()<CR>
+nnoremap <silent> <leader>b :lua require'dap'.toggle_breakpoint()<CR>
+nnoremap <silent> <leader>B :lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>
+nnoremap <silent> <leader>lp :lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>
+nnoremap <silent> <leader>dr :lua require'dap'.repl.open()<CR>
+nnoremap <silent> <leader>dl :lua require'dap'.run_last()<CR>
 
 " show function signature on hover
 autocmd CursorHoldI * silent!       :Lspsaga signature_help

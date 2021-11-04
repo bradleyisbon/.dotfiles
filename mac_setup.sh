@@ -6,3 +6,6 @@ brew update
 brew upgrade
 brew install nvim
 ln -sv init.vim ~/.config/nvim/init.vim
+
+brew install --cask visual-studio-code
+ln -sv settings.json "~/Library/Application Support/Code/User/settings.json"
