@@ -1,0 +1,30 @@
+{
+    "update.mode": "manual",
+    "python.languageServer": "Pylance",
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "python.experiments.enabled": false,
+    "window.openFilesInNewWindow": "on",
+    "window.openFoldersInNewWindow": "on",
+    "jupyter.alwaysTrustNotebooks": true,
+    "window.restoreWindows": "none",
+    "workbench.colorTheme": "Solarized Dark",
+    "python.analysis.typeCheckingMode": "basic",
+    "python.venvPath": "~/Library/Caches/pypoetry/virtualenvs",
+    "explorer.confirmDragAndDrop": false,
+    "editor.suggest.localityBonus": true,
+    "editor.suggestSelection": "recentlyUsedByPrefix",
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "vim.matchpairs": "<:>,(:),{:},[:]",
+    "vim.easymotion": true,
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.bracketPairColorization.enabled": true,
+    "editor.inlineSuggest.enabled": true,
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    }
+}
