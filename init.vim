@@ -68,7 +68,7 @@ vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
     sources = {
       { name = 'nvim_lsp' },
       { name = 'buffer' },
-    }
+    },
   })
 
 -- for syntax highlighting
@@ -147,3 +147,8 @@ autocmd BufRead,BufNewFile *.htm,*.html setlocal tabstop=4 shiftwidth=4 softtabs
 " single tab after line break inside parens
 let g:pyindent_open_paren = 'shiftwidth()'
 
+" Return to last edit position when opening files - https://stackoverflow.com/a/14449484
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
