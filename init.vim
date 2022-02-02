@@ -16,8 +16,11 @@ Plug 'hrsh7th/nvim-cmp'
 " i believe hrsh7th/nvim-cmp uses hrsh7th/cmp-nvim-lsp to talk to the LSP.
 " whatever it does, it makes completions work
 Plug 'hrsh7th/cmp-nvim-lsp'
+" nvim-cmp requires a snippet engine. might as well use the one they wrote
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
 " used for signature hover - doesn't work with neovim 0.5.1
-Plug 'glepnir/lspsaga.nvim'
+" Plug 'glepnir/lspsaga.nvim'
 " maximizes/demaximizes selected window
 Plug 'szw/vim-maximizer'
 " file explorer
@@ -34,6 +37,8 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Fixes python indents
 Plug 'Vimjas/vim-python-pep8-indent'
+" Rename matching tags
+Plug 'AndrewRadev/tagalong.vim'
 call plug#end()
 
 " from https://github.com/hrsh7th/nvim-cmp readme
@@ -41,12 +46,19 @@ set completeopt=menu,menuone,noselect
 
 lua << EOF
 require'lspconfig'.pyright.setup{}
+require'lspconfig'.tsserver.setup{}
 
 -- copied from :h lsp:
 -- i_CTRL-X_CTRL-O will provide completions from the language server
 -- Use LSP as the handler for omnifunc.
 --    See `:help omnifunc` and `:help ins-completion` for more information.
 vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+	border = 'rounded'
+	})
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+	border = 'rounded'
+	})
 
   -- Setup nvim-cmp.
   local cmp = require'cmp'
@@ -54,6 +66,7 @@ vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
   cmp.setup({
     snippet = {
       expand = function(args)
+      	vim.fn["vsnip#anonymous"](args.body)
       end,
     },
     mapping = {
@@ -66,8 +79,8 @@ vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
       ['<CR>'] = cmp.mapping.confirm({ select = true }),
     },
     sources = {
-      { name = 'nvim_lsp' },
       { name = 'buffer' },
+      { name = 'nvim_lsp' },
     },
   })
 
@@ -104,6 +117,7 @@ autocmd CursorHoldI * silent!       :Lspsaga signature_help
 
 "show relative line numbers by default
 set rnu
+set nu
 
 " use pylint as neomake linter
 " let g:neomake_python_enabled_makers = ['pylint']
@@ -155,3 +169,6 @@ autocmd BufReadPost *
 
 " hide that stupid gray bar
 set signcolumn=no
+
+" use <leader>nl to toggle number lines
+nnoremap <silent> <leader>nl :set nu! rnu!<CR>
