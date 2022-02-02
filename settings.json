@@ -26,5 +26,12 @@
     "editor.inlineSuggest.enabled": true,
     "[json]": {
         "editor.defaultFormatter": "vscode.json-language-features"
-    }
+    },
+    "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+    "vscode-neovim.neovimInitVimPaths.darwin": "/Users/bradleyisbon/.dotfiles/init.vim",
+    "editor.lineNumbers": "relative",
+    "files.associations": {
+        "*.html": "html"
+    },
+    "auto-close-tag.disableOnLanguage":["typescript"]
 }
