@@ -44,6 +44,9 @@ Plug 'ray-x/go.nvim'
 " treesitter theme that for syntax highlighting in go and a bunch of other
 " languages
 Plug 'ray-x/aurora' 
+" tsx formatting
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 call plug#end()
 
 " from https://github.com/hrsh7th/nvim-cmp readme
@@ -189,3 +192,6 @@ set signcolumn=no
 
 " use <leader>nl to toggle number lines
 nnoremap <silent> <leader>nl :set nu! rnu!<CR>
+
+" set filetypes as typescriptreact
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
