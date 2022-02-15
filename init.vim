@@ -39,14 +39,24 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'Vimjas/vim-python-pep8-indent'
 " Rename matching tags
 Plug 'AndrewRadev/tagalong.vim'
+" Does all the go things
+Plug 'ray-x/go.nvim'
+" treesitter theme that for syntax highlighting in go and a bunch of other
+" languages
+Plug 'ray-x/aurora' 
 call plug#end()
 
 " from https://github.com/hrsh7th/nvim-cmp readme
 set completeopt=menu,menuone,noselect
 
+" make aurora work
+set termguicolors
+colorscheme aurora
+
 lua << EOF
 require'lspconfig'.pyright.setup{}
 require'lspconfig'.tsserver.setup{}
+require'lspconfig'.gopls.setup{}
 
 -- copied from :h lsp:
 -- i_CTRL-X_CTRL-O will provide completions from the language server
@@ -91,7 +101,14 @@ require'nvim-treesitter.configs'.setup {
 
 -- python debugger
 require('dap-python').setup('~/Envs/debugpy/bin/python')
+
+-- start go.nvim
+require('go').setup()
 EOF
+
+" Start go formatter in go files
+autocmd BufWritePre *.go :silent! lua require('go.format').gofmt()
+
 
 nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
