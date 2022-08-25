@@ -144,6 +144,12 @@ function M.setup()
 				require("config.toggleterm").setup()
 			end
 		}
+
+		use {
+			'nvim-telescope/telescope.nvim',
+			tag = '0.1.0',
+			requires = { {'nvim-lua/plenary.nvim'} }
+		}
 	end
 
 	packer_init()
