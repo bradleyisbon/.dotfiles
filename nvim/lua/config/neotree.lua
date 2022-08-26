@@ -4,7 +4,8 @@ function M.setup()
 	require("neo-tree").setup({
 		window = {
 			mappings = {
-				["o"] = "open"
+				["o"] = "open",
+				["<space>"] = "<leader>"
 			}
 		},
 		filesystem = {
