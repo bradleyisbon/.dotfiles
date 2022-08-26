@@ -21,7 +21,7 @@ function M.setup()
 			t = {":Neotree toggle<CR>", "File Tree"},
 			h = {":set hlsearch!<CR>", "Highlights"},
 		},
-		f = {
+		d = {
 			name = "Force",
 			c = { ":q!<CR>", "Close Window" },
 			q = { ":qa!<CR>", "Quit All" }
