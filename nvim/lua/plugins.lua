@@ -141,6 +141,7 @@ function M.setup()
 			"akinsho/toggleterm.nvim",
 			tag = 'v2.*',
 			config = function()
+				print('toggleterm config')
 				require("config.toggleterm").setup()
 			end
 		}
@@ -148,7 +149,10 @@ function M.setup()
 		use {
 			'nvim-telescope/telescope.nvim',
 			tag = '0.1.0',
-			requires = { {'nvim-lua/plenary.nvim'} }
+			requires = { {'nvim-lua/plenary.nvim'} },
+			config = function()
+				require("config.telescope").setup()
+			end
 		}
 	end
 
