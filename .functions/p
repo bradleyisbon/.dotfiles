@@ -1,0 +1,9 @@
+p() {
+	cd $PROJECTS/$1
+}
+
+_p() {
+	_path_files -/ -W $PROJECTS
+}
+
+compdef _p p
