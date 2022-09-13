@@ -40,9 +40,7 @@ function M.setup()
 
 		use { 
 			"nvim-treesitter/nvim-treesitter",
-			run = ':TSUpdate',
-			setup = function()
-			end,
+			run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
 			config = function()
 				require('config.treesitter').setup()
 			end,
@@ -54,13 +52,13 @@ function M.setup()
 				require("config.autopairs").setup()
 			end,
 		}
-		
-		use {
-			'numToStr/Comment.nvim',
-			config = function()
-				require('Comment').setup()
-			end
-		}
+
+		 use {
+		 	'numToStr/Comment.nvim',
+		 	config = function()
+		 		require('Comment').setup()
+		 	end,
+		 }
 
 		use {
 			"kylechui/nvim-surround",
@@ -89,7 +87,6 @@ function M.setup()
 				require("config.whichkey").setup()
 			end,
 		}
-
 		use {
 			"neovim/nvim-lspconfig",
 			opt = true,  -- set as optional; load on event below

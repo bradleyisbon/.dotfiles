@@ -9,6 +9,9 @@ function M.setup()
 		incremental_selection = {
 			enable = true,
 			keymaps = {}
+		},
+		highlight = {
+			enable = true -- treesitter won't work on first file opened if enabled
 		}
 	})
 end
