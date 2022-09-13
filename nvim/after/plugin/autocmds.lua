@@ -11,3 +11,9 @@ api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank{higroup="IncSearch", timeout=700}
 	end
 })
+
+-- Set shiftwidth for typescript
+api.nvim_create_autocmd("FileType", {
+	pattern = {"typescript"},
+	command = "set shiftwidth=4"
+})
