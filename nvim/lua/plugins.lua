@@ -87,20 +87,44 @@ function M.setup()
 				require("config.whichkey").setup()
 			end,
 		}
-		use {
-			"neovim/nvim-lspconfig",
-			opt = true,  -- set as optional; load on event below
-			event = "BufReadPre",  -- load plugin on this event
-			-- wants is undocumented packer keyword; seems to give warning on load if wants plugin not installed
-			wants = { "cmp-nvim-lsp", "nvim-lsp-installer", "lsp_signature.nvim" }, 
+
+		use { 
+			"williamboman/mason.nvim",
 			config = function()
 				require("config.lsp").setup()
 			end,
 			requires = {
-				"williamboman/nvim-lsp-installer",
 				"ray-x/lsp_signature.nvim",
+				"hrsh7th/cmp-nvim-lsp",
 			}
 		}
+		use {
+			"williamboman/mason-lspconfig.nvim",
+		}
+
+		use {
+			"neovim/nvim-lspconfig",
+		}
+
+		-- use {
+		-- 	"neovim/nvim-lspconfig",
+		-- 	opt = true,  -- set as optional; load on event below
+		-- 	event = "BufReadPre",  -- load plugin on this event
+		-- 	-- wants is undocumented packer keyword; seems to give warning on load if wants plugin not installed
+		-- 	wants = {
+		-- 		"cmp-nvim-lsp",
+		-- 		"nvim-lsp-installer",
+		-- 		"lsp_signature.nvim"
+		-- 	}, 
+		-- 	config = function()
+		-- 		require("config.lsp").setup()
+		-- 	end,
+		-- 	requires = {
+		-- 		"williamboman/nvim-lsp-installer",
+		-- 		"ray-x/lsp_signature.nvim",
+		-- 	}
+		-- }
+		--
 
 		use {
 			"hrsh7th/nvim-cmp",

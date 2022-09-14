@@ -1,0 +1,3 @@
+br() {
+	open -a "Google Chrome" $1
+}

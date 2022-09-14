@@ -11,7 +11,7 @@ function M.setup()
 			keymaps = {}
 		},
 		highlight = {
-			enable = true -- treesitter won't work on first file opened if enabled
+			enable = true
 		}
 	})
 end
