@@ -130,6 +130,7 @@ function M.setup()
 
 		use {
 			"hrsh7th/nvim-cmp",
+			commit = '99ef854322d0de9269044ee197b6c9ca14911d96',
 			event = "InsertEnter", -- load on entering insert mode
 			opt = true,
 			config = function()
