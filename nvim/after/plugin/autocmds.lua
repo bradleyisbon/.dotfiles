@@ -15,5 +15,5 @@ api.nvim_create_autocmd("TextYankPost", {
 -- Set shiftwidth for typescript
 api.nvim_create_autocmd("FileType", {
 	pattern = {"typescript", "javascript"},
-	command = "set shiftwidth=4"
+	command = "set shiftwidth=4 expandtab"
 })
