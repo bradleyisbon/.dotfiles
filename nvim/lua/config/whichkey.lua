@@ -27,7 +27,8 @@ function M.setup()
 			q = { ":qa!<CR>", "Quit All" }
 		},
 		q = {":qa<CR>", "Quit All"},
-		c = {":q<CR>", "Close"}
+		c = {":q<CR>", "Close"},
+		x = {":noh<CR>", "Clear Highlights"}
 	}
 
 	whichkey.setup(conf)

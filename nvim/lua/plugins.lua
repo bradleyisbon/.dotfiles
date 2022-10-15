@@ -68,6 +68,13 @@ function M.setup()
 		}
 
 		use {
+			'lewis6991/gitsigns.nvim',
+			config = function()
+				require("config.gitsigns").setup()
+			end
+		}
+
+		use {
 			-- uses fd as fuzzy finder; `brew install fd` to install on mac
 			"nvim-neo-tree/neo-tree.nvim",
 			branch = "v2.x", -- ensure no breaking changes
@@ -109,6 +116,7 @@ function M.setup()
 
 		use {
 			"hrsh7th/nvim-cmp",
+			commit = '99ef854322d0de9269044ee197b6c9ca14911d96',
 			event = "InsertEnter", -- load on entering insert mode
 			opt = true,
 			config = function()
