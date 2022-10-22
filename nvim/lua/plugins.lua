@@ -102,7 +102,10 @@ function M.setup()
 			end,
 			requires = {
 				"ray-x/lsp_signature.nvim",
-				"hrsh7th/cmp-nvim-lsp",
+				{
+					"hrsh7th/cmp-nvim-lsp",
+					commit = "affe808a5c56b71630f17aa7c38e15c59fd648a8" -- getting annoying deprecation warning for later versions
+				},
 			}
 		}
 
