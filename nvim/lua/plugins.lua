@@ -53,6 +53,12 @@ function M.setup()
 			end,
 		}
 
+
+		use {
+			"windwp/nvim-ts-autotag",
+			commit = "fdefe46c6807441460f11f11a167a2baf8e4534b"
+		}
+
 		 use {
 		 	'numToStr/Comment.nvim',
 		 	config = function()
