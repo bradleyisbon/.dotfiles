@@ -136,7 +136,10 @@ function M.setup()
 				"hrsh7th/cmp-buffer",
 				"hrsh7th/cmp-path",
 				"hrsh7th/cmp-nvim-lua",
-				"hrsh7th/cmp-nvim-lsp",
+				{
+					"hrsh7th/cmp-nvim-lsp",
+					commit = "affe808a5c56b71630f17aa7c38e15c59fd648a8" -- getting annoying deprecation warning for later versions
+				},
 				"ray-x/cmp-treesitter",
 				"saadparwaiz1/cmp_luasnip",
 				{
