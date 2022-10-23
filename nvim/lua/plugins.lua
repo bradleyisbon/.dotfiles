@@ -55,13 +55,19 @@ function M.setup()
 				require("config.autopairs").setup()
 			end,
 		}
-		
+
+
 		use {
-			'numToStr/Comment.nvim',
-			config = function()
-				require('Comment').setup()
-			end
+			"windwp/nvim-ts-autotag",
+			commit = "fdefe46c6807441460f11f11a167a2baf8e4534b"
 		}
+
+		 use {
+		 	'numToStr/Comment.nvim',
+		 	config = function()
+		 		require('Comment').setup()
+		 	end,
+		 }
 
 		use {
 			"kylechui/nvim-surround",
@@ -111,6 +117,7 @@ function M.setup()
 				},
 			}
 		}
+
 		use {
 			"williamboman/mason-lspconfig.nvim",
 		}
@@ -118,26 +125,6 @@ function M.setup()
 		use {
 			"neovim/nvim-lspconfig",
 		}
-
-		-- use {
-		-- 	"neovim/nvim-lspconfig",
-		-- 	opt = true,  -- set as optional; load on event below
-		-- 	event = "BufReadPre",  -- load plugin on this event
-		-- 	-- wants is undocumented packer keyword; seems to give warning on load if wants plugin not installed
-		-- 	wants = {
-		-- 		"cmp-nvim-lsp",
-		-- 		"nvim-lsp-installer",
-		-- 		"lsp_signature.nvim"
-		-- 	}, 
-		-- 	config = function()
-		-- 		require("config.lsp").setup()
-		-- 	end,
-		-- 	requires = {
-		-- 		"williamboman/nvim-lsp-installer",
-		-- 		"ray-x/lsp_signature.nvim",
-		-- 	}
-		-- }
-		--
 
 		use {
 			"hrsh7th/nvim-cmp",
