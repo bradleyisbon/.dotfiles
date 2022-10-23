@@ -40,6 +40,7 @@ function M.setup()
 
 		use { 
 			"nvim-treesitter/nvim-treesitter",
+			commit = "d3ca4de",
 			run = ':TSUpdate',
 			setup = function()
 			end,
@@ -104,7 +105,10 @@ function M.setup()
 			end,
 			requires = {
 				"ray-x/lsp_signature.nvim",
-				"hrsh7th/cmp-nvim-lsp",
+				{
+					"hrsh7th/cmp-nvim-lsp",
+					commit = "affe808",
+				},
 			}
 		}
 		use {
@@ -148,7 +152,10 @@ function M.setup()
 				"hrsh7th/cmp-buffer",
 				"hrsh7th/cmp-path",
 				"hrsh7th/cmp-nvim-lua",
-				"hrsh7th/cmp-nvim-lsp",
+				{
+					"hrsh7th/cmp-nvim-lsp",
+					commit = "affe808"
+				},
 				"ray-x/cmp-treesitter",
 				"saadparwaiz1/cmp_luasnip",
 				{
