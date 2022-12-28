@@ -28,7 +28,11 @@ function M.setup()
 		},
 		q = {":qa<CR>", "Quit All"},
 		c = {":q<CR>", "Close"},
-		x = {":noh<CR>", "Clear Highlights"}
+		x = {":noh<CR>", "Clear Highlights"},
+		h = {"<C-w>h", "Window Left"},
+		j = {"<C-w>j", "Window Down"},
+		k = {"<C-w>k", "Window Up"},
+		l = {"<C-w>l", "Window Right"},
 	}
 
 	whichkey.setup(conf)
