@@ -16,6 +16,7 @@ function M.setup()
 			h = {"<cmd>Telescope help_tags<cr>", "Help Tags"},
 			r = {"<cmd>Telescope lsp_references<cr>", "Find References"},
 			s = {"<cmd>Telescope grep_string<cr>", "Find String"},
+			d = {"<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols"},
 		}
 	}
 
