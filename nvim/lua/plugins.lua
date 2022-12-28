@@ -59,7 +59,7 @@ function M.setup()
 
 		use {
 			"windwp/nvim-ts-autotag",
-			commit = "fdefe46c6807441460f11f11a167a2baf8e4534b"
+			commit = "fdefe46c6807441460f11f11a167a2baf8e4534b",
 		}
 
 		 use {
@@ -177,6 +177,29 @@ function M.setup()
 			requires = { {'nvim-lua/plenary.nvim'} },
 			config = function()
 				require("config.telescope").setup()
+			end
+		}
+
+		use {
+			'jose-elias-alvarez/null-ls.nvim',
+			commit = '07d4ed4c6b561914aafd787453a685598bec510f',
+			config = function()
+				require("config.null_ls").setup()
+			end
+		}
+
+		use {
+			'Tsuzat/NeoSolarized.nvim',
+			config = function()
+				require("config.neosolarized").setup()
+			end
+		}
+
+		use {
+			'nvim-lualine/lualine.nvim',
+			requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+			config = function()
+				require("config.lualine").setup()
 			end
 		}
 	end
