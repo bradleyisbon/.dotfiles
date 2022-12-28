@@ -14,6 +14,10 @@ local function on_attach(client, bufnr)
 	-- See `:help omnifunc` and `:help ins-completion` for more information
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
+	-- Disable formatting - I'll use null-ls for that - https://stackoverflow.com/a/71671597
+	client.server_capabilities.document_formatting = false
+        client.server_capabilities.document_range_formatting = false
+
 	-- Use LSP as the handler for formatexpr.
 	-- See `:help formatexpr` for more info
 	vim.api.nvim_buf_set_option(0, "formatexpr", "v:lua.vim.lsp.formatexpr()")
