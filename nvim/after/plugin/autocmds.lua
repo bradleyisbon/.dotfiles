@@ -15,7 +15,7 @@ api.nvim_create_autocmd("TextYankPost", {
 -- Set shiftwidth for typescript
 api.nvim_create_autocmd("FileType", {
 	pattern = {"typescript", "javascript", "typescriptreact"},
-	command = "set shiftwidth=4 expandtab"
+	command = "set shiftwidth=2 expandtab"
 })
 
 -- Return to last edit position when opening files - https://stackoverflow.com/a/14449484
