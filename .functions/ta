@@ -1,0 +1,9 @@
+ta() {
+	tmux a -t $1
+}
+
+_ta() {
+	_arguments tmux ls -F '#{session_name}'
+}
+
+compdef _p p

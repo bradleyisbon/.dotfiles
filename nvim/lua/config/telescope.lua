@@ -12,8 +12,13 @@ function M.setup()
 			name = "Telescope",
 			f = {"<cmd>Telescope find_files<cr>", "Find Files"},
 			g = {"<cmd>Telescope live_grep<cr>", "Live Grep"},
+			l = {"<cmd>Telescope find_files<cr>", "Find Files"},
 			b = {"<cmd>Telescope buffers<cr>", "Buffers"},
+			f = {"<cmd>Telescope find_files<cr>", "Find Files"},
+			g = {"<cmd>Telescope live_grep<cr>", "Live Grep"},
 			h = {"<cmd>Telescope help_tags<cr>", "Help Tags"},
+			j = {"<cmd>Telescope jumplist<cr>", "Jump List"},
+			m = {"<cmd>Telescope marks", "Marks"},
 			r = {"<cmd>Telescope lsp_references<cr>", "Find References"},
 			s = {"<cmd>Telescope grep_string<cr>", "Find String"},
 		}

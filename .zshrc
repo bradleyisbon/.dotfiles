@@ -29,4 +29,4 @@ for i in $HOME/.functions/*;
 	do source $i
 done
 
-
+echo 'loaded .zsh'

@@ -11,7 +11,8 @@ function M.setup()
 		},
 		filesystem = {
 			find_by_full_path_words = true,
-			filtered_items = {hide_dotfiles = false}
+			filtered_items = {hide_dotfiles = false},
+			follow_current_file = true
 		},
 	})
 end
