@@ -10,6 +10,7 @@ function M.setup()
 	local mappings = {
 		f = {
 			name = "Telescope",
+			a = {"<cmd>Telescope<cr>", "All Pickers"},
 			f = {"<cmd>Telescope find_files<cr>", "Find Files"},
 			g = {"<cmd>Telescope live_grep<cr>", "Live Grep"},
 			b = {"<cmd>Telescope buffers<cr>", "Buffers"},
