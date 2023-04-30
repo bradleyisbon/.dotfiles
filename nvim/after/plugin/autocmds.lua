@@ -23,3 +23,9 @@ api.nvim_create_autocmd("BufReadPost", {
 	pattern = {"*"},
 	command = "silent! normal! g`\"zv"
 })
+
+-- Format on save
+api.nvim_create_autocmd("BufWritePre", {
+	pattern = {"*"},
+	command = "lua vim.lsp.buf.format()"
+})

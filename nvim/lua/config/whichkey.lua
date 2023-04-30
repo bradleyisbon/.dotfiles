@@ -33,6 +33,8 @@ function M.setup()
 		j = {"<C-w>j", "Window Down"},
 		k = {"<C-w>k", "Window Up"},
 		l = {"<C-w>l", "Window Right"},
+		w = {":w<CR>", "Write"},
+		a = {":wa<CR>", "Write All"},
 	}
 
 	whichkey.setup(conf)

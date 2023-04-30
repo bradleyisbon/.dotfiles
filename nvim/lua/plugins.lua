@@ -202,6 +202,14 @@ function M.setup()
 				require("config.lualine").setup()
 			end
 		}
+
+		use {
+			"nvim-telescope/telescope-file-browser.nvim",
+			requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+			config = function()
+				require("config.telescope_file_browser").setup()
+			end
+		}
 	end
 
 	packer_init()
