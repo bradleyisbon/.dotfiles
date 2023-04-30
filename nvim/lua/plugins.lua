@@ -69,6 +69,11 @@ function M.setup()
 		 	end,
 		 }
 
+		-- configured in treesitter.lua
+		use {
+			'JoosepAlviste/nvim-ts-context-commentstring'
+		}
+
 		use {
 			"kylechui/nvim-surround",
 			config = function()

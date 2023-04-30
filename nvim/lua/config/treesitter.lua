@@ -15,6 +15,18 @@ function M.setup()
 		},
 		autotag = {
 			enable = true -- relies on windwp/nvim-ts-autotag
+		},
+		context_commentstring = {
+			enable = true,
+			config = {
+				javascript = {
+					__default = '// %s',
+					jsx_element = '{/* %s */}',
+					jsx_fragment = '{/* %s */}',
+					jsx_attribute = '{/* %s */}',
+					comment = '// %s'
+				}
+			}
 		}
 	})
 end
