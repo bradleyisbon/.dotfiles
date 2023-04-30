@@ -15,7 +15,11 @@ export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-export PATH="$HOME/.poetry/bin:$PATH"
+export GOPATH="$HOME/go"
+export PATH="$HOME/.poetry/bin:$PATH:$GOPATH/bin"
+
+eval "$(direnv hook zsh)"
+
 export PROJECTS="$HOME/Projects"
 
 export NVM_DIR="$HOME/.nvm"
@@ -29,4 +33,4 @@ for i in $HOME/.functions/*;
 	do source $i
 done
 
-
+source <(kubectl completion zsh)
