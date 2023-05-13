@@ -9,7 +9,7 @@ g.mapleader = " "
 -- <LocalLeader> is used for mappings which are local to a buffer
 g.maplocalleader = " "
 
-keymap("n", "<c-j>", "10j", default_opts)
-keymap("n", "<c-k>", "10k", default_opts)
-keymap("v", "<c-j>", "10j", default_opts)
-keymap("v", "<c-k>", "10k", default_opts)
+keymap("n", "<c-j>", "<c-w>-", default_opts)
+keymap("n", "<c-k>", "<c-w>+", default_opts)
+keymap("v", "<c-j>", "<c-w>-", default_opts)
+keymap("v", "<c-k>", "<c-w>+", default_opts)
