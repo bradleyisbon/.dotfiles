@@ -12,6 +12,12 @@ api.nvim_create_autocmd("TextYankPost", {
 	end
 })
 
+-- Set tf files to the filetype terraform
+api.nvim_create_autocmd({"BufNewFile","BufRead"}, {
+	pattern = {"*.tf"},
+	command = "set filetype=terraform"
+})
+
 -- Set shiftwidth for typescript
 api.nvim_create_autocmd("FileType", {
 	pattern = {"typescript", "javascript", "typescriptreact"},
