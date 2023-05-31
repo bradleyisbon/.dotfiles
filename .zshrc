@@ -11,6 +11,8 @@ bindkey "^R" history-incremental-search-backward
 
 alias vim="nvim"
 alias v="nvim"
+export EDITOR=nvim
+
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
@@ -34,3 +36,7 @@ for i in $HOME/.functions/*;
 done
 
 source <(kubectl completion zsh)
+source <(doctl completion zsh)
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
