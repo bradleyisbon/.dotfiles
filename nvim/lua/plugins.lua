@@ -229,6 +229,11 @@ function M.setup()
 				require("config.navbuddy").setup()
 			end,
 		}
+
+		use {
+			'uloco/bluloco.nvim',
+			requires = { 'rktjmp/lush.nvim' }
+		}
 	end
 
 	packer_init()

@@ -7,4 +7,4 @@ opt.termguicolors = true -- Add more colors to terminal
 opt.timeoutlen = 200 -- Time in milliseconds to wait for a mapped sequence to complete
 opt.so = 999
 
-vim.cmd[[colorscheme NeoSolarized]]
+vim.cmd[[colorscheme bluloco]]
