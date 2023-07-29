@@ -40,7 +40,7 @@ function M.setup()
 
 		use { 
 			"nvim-treesitter/nvim-treesitter",
-			commit = "d3ca4de",
+			-- commit = "d3ca4de",
 			run = ':TSUpdate',
 			setup = function()
 			end,
@@ -233,6 +233,13 @@ function M.setup()
 		use {
 			'uloco/bluloco.nvim',
 			requires = { 'rktjmp/lush.nvim' }
+		}
+
+		use {
+			's1n7ax/nvim-window-picker',
+			-- tag = 'v2.*', locking to commit until statusbar background color fixed
+			commit = '6e9875711b9d5cefcf77cc6e30dcce53135b9cc5',
+			config = require('config.window_picker').setup
 		}
 	end
 
