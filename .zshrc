@@ -14,6 +14,7 @@ alias v="nvim"
 alias py="cd ~/Projects/bpython-env/bin ; source activate ; bpython ; deactivate ; cd -"
 alias kaf="kubectl apply -f "
 alias kdf="kubectl delete -f "
+alias nv="v ~/.dotfiles/nvim"
 export EDITOR=nvim
 
 export PYENV_ROOT="$HOME/.pyenv"
