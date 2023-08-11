@@ -192,6 +192,56 @@ function M.setup()
 				require("config.telescope").setup()
 			end
 		}
+
+		-- use {
+		-- 	'jose-elias-alvarez/null-ls.nvim',
+		-- 	commit = '07d4ed4c6b561914aafd787453a685598bec510f',
+		-- 	config = function()
+		-- 		require("config.null_ls").setup()
+		-- 	end
+		-- }
+
+		use {
+			'Tsuzat/NeoSolarized.nvim',
+			config = function()
+				require("config.neosolarized").setup()
+			end
+		}
+
+		use {
+			'nvim-lualine/lualine.nvim',
+			requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+			config = function()
+				require("config.lualine").setup()
+			end
+		}
+
+		use {
+			"nvim-telescope/telescope-file-browser.nvim",
+			requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+			config = function()
+				require("config.telescope_file_browser").setup()
+			end
+		}
+
+		use {
+			"SmiteshP/nvim-navbuddy",
+			requires = {
+				"neovim/nvim-lspconfig",
+				"SmiteshP/nvim-navic",
+				"MunifTanjim/nui.nvim",
+				"numToStr/Comment.nvim",        -- Optional
+				"nvim-telescope/telescope.nvim" -- Optional
+			},
+			config = function()
+				require("config.navbuddy").setup()
+			end,
+		}
+
+		use {
+			'uloco/bluloco.nvim',
+			requires = { 'rktjmp/lush.nvim' }
+		}
 	end
 
 	packer_init()

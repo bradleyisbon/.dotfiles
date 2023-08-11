@@ -21,6 +21,8 @@ function M.setup()
 			m = {"<cmd>Telescope marks", "Marks"},
 			r = {"<cmd>Telescope lsp_references<cr>", "Find References"},
 			s = {"<cmd>Telescope grep_string<cr>", "Find String"},
+			d = {"<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols"},
+			f = {"<cmd>Telescope find_files<cr>", "Find Files"},
 		}
 	}
 
