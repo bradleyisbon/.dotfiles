@@ -20,13 +20,13 @@ function M.setup()
 		prefix = "<leader>"
 	}
 
-	-- local mappings = {
-	-- 	f = {
-	-- 		f = {"<cmd>Telescope file_browser<cr>", "Find Files"},
-	-- 	}
-	-- }
-	--
-	-- whichkey.register(mappings, opts)
+	local mappings = {
+		f = {
+			f = {"<cmd>Telescope file_browser<cr>", "Find Files"},
+		}
+	}
+
+	whichkey.register(mappings, opts)
 end
 
 return M

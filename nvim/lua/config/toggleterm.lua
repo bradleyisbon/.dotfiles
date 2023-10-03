@@ -20,7 +20,8 @@ function M.setup()
 	end
 
 	function set_tt_keys()
-		vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], {buffer = 0})
+		vim.keymap.set('t', '<esc><esc>', [[<C-\><C-n>]], {buffer = 0})
+		vim.keymap.set('t', '<C-space>', [[<C-\><C-n>]], {buffer = 0})
 	end
 
 	-- something else must be overwriting the <esc> mapping for terminal mode

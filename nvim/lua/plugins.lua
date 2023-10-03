@@ -40,7 +40,7 @@ function M.setup()
 
 		use { 
 			"nvim-treesitter/nvim-treesitter",
-			commit = "d3ca4de",
+			-- commit = "d3ca4de",
 			run = ':TSUpdate',
 			setup = function()
 			end,
@@ -55,12 +55,23 @@ function M.setup()
 				require("config.autopairs").setup()
 			end,
 		}
-		
+
+
 		use {
-			'numToStr/Comment.nvim',
-			config = function()
-				require('Comment').setup()
-			end
+			"windwp/nvim-ts-autotag",
+			commit = "fdefe46c6807441460f11f11a167a2baf8e4534b",
+		}
+
+		 use {
+		 	'numToStr/Comment.nvim',
+		 	config = function()
+		 		require('Comment').setup()
+		 	end,
+		 }
+
+		-- configured in treesitter.lua
+		use {
+			'JoosepAlviste/nvim-ts-context-commentstring'
 		}
 
 		use {
@@ -111,6 +122,7 @@ function M.setup()
 				},
 			}
 		}
+
 		use {
 			"williamboman/mason-lspconfig.nvim",
 		}
@@ -118,26 +130,6 @@ function M.setup()
 		use {
 			"neovim/nvim-lspconfig",
 		}
-
-		-- use {
-		-- 	"neovim/nvim-lspconfig",
-		-- 	opt = true,  -- set as optional; load on event below
-		-- 	event = "BufReadPre",  -- load plugin on this event
-		-- 	-- wants is undocumented packer keyword; seems to give warning on load if wants plugin not installed
-		-- 	wants = {
-		-- 		"cmp-nvim-lsp",
-		-- 		"nvim-lsp-installer",
-		-- 		"lsp_signature.nvim"
-		-- 	}, 
-		-- 	config = function()
-		-- 		require("config.lsp").setup()
-		-- 	end,
-		-- 	requires = {
-		-- 		"williamboman/nvim-lsp-installer",
-		-- 		"ray-x/lsp_signature.nvim",
-		-- 	}
-		-- }
-		--
 
 		use {
 			"hrsh7th/nvim-cmp",
@@ -193,13 +185,13 @@ function M.setup()
 			end
 		}
 
-		-- use {
-		-- 	'jose-elias-alvarez/null-ls.nvim',
-		-- 	commit = '07d4ed4c6b561914aafd787453a685598bec510f',
-		-- 	config = function()
-		-- 		require("config.null_ls").setup()
-		-- 	end
-		-- }
+		use {
+			'jose-elias-alvarez/null-ls.nvim',
+			commit = '07d4ed4c6b561914aafd787453a685598bec510f',
+			config = function()
+				require("config.null_ls").setup()
+			end
+		}
 
 		use {
 			'Tsuzat/NeoSolarized.nvim',
@@ -241,6 +233,13 @@ function M.setup()
 		use {
 			'uloco/bluloco.nvim',
 			requires = { 'rktjmp/lush.nvim' }
+		}
+
+		use {
+			's1n7ax/nvim-window-picker',
+			-- tag = 'v2.*', locking to commit until statusbar background color fixed
+			commit = '6e9875711b9d5cefcf77cc6e30dcce53135b9cc5',
+			config = require('config.window_picker').setup
 		}
 	end
 

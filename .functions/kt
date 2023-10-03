@@ -1,0 +1,9 @@
+kt() {
+	ln -sf /Users/bisbon/.config/kitty/kitty-themes/themes/$1 /Users/bisbon/.config/kitty/theme.conf
+}
+
+_kt() {
+	_path_files -W /Users/bisbon/.config/kitty/kitty-themes/themes
+}
+
+compdef _kt kt

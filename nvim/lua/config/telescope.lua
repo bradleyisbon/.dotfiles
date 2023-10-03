@@ -10,7 +10,7 @@ function M.setup()
 	local mappings = {
 		f = {
 			name = "Telescope",
-			f = {"<cmd>Telescope find_files<cr>", "Find Files"},
+			a = {"<cmd>Telescope<cr>", "All Pickers"},
 			g = {"<cmd>Telescope live_grep<cr>", "Live Grep"},
 			l = {"<cmd>Telescope find_files<cr>", "Find Files"},
 			b = {"<cmd>Telescope buffers<cr>", "Buffers"},
@@ -22,7 +22,6 @@ function M.setup()
 			r = {"<cmd>Telescope lsp_references<cr>", "Find References"},
 			s = {"<cmd>Telescope grep_string<cr>", "Find String"},
 			d = {"<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols"},
-			f = {"<cmd>Telescope find_files<cr>", "Find Files"},
 		}
 	}
 

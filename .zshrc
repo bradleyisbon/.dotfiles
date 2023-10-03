@@ -11,11 +11,21 @@ bindkey "^R" history-incremental-search-backward
 
 alias vim="nvim"
 alias v="nvim"
+alias py="cd ~/Projects/bpython-env/bin ; source activate ; bpython ; deactivate ; cd -"
+alias kaf="kubectl apply -f "
+alias kdf="kubectl delete -f "
+alias nv="v ~/.dotfiles/nvim"
+export EDITOR=nvim
+
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-export PATH="$HOME/.poetry/bin:$PATH"
+export GOPATH="$HOME/go"
+export PATH="$HOME/.poetry/bin:$PATH:$GOPATH/bin"
+
+eval "$(direnv hook zsh)"
+
 export PROJECTS="$HOME/Projects"
 
 export NVM_DIR="$HOME/.nvm"
@@ -29,4 +39,8 @@ for i in $HOME/.functions/*;
 	do source $i
 done
 
-echo 'loaded .zsh'
+source <(kubectl completion zsh)
+source <(doctl completion zsh)
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform

@@ -12,8 +12,26 @@ api.nvim_create_autocmd("TextYankPost", {
 	end
 })
 
+-- Set tf files to the filetype terraform
+api.nvim_create_autocmd({"BufNewFile","BufRead"}, {
+	pattern = {"*.tf"},
+	command = "set filetype=terraform"
+})
+
 -- Set shiftwidth for typescript
 api.nvim_create_autocmd("FileType", {
 	pattern = {"typescript", "javascript", "typescriptreact"},
 	command = "set shiftwidth=2 expandtab"
+})
+
+-- Return to last edit position when opening files - https://stackoverflow.com/a/14449484
+api.nvim_create_autocmd("BufReadPost", {
+	pattern = {"*"},
+	command = "silent! normal! g`\"zv"
+})
+
+-- Format on save
+api.nvim_create_autocmd("BufWritePre", {
+	pattern = {"*"},
+	command = "lua vim.lsp.buf.format()"
 })
