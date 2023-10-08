@@ -13,7 +13,7 @@ function M.setup()
 		local install_path = data_path .. "/site/pack/packer/start/packer.nvim"
 
 		-- if nothing is installed to the install path
-		-- then clone the packer repo 
+		-- then clone the packer repo
 		if fn.empty(fn.glob(install_path)) > 0 then
 			packer_bootstrap = fn.system {
 				"git",
@@ -38,7 +38,7 @@ function M.setup()
 			require("packer").sync()
 		end
 
-		use { 
+		use {
 			"nvim-treesitter/nvim-treesitter",
 			-- commit = "d3ca4de",
 			run = ':TSUpdate',
@@ -62,12 +62,12 @@ function M.setup()
 			commit = "fdefe46c6807441460f11f11a167a2baf8e4534b",
 		}
 
-		 use {
-		 	'numToStr/Comment.nvim',
-		 	config = function()
-		 		require('Comment').setup()
-		 	end,
-		 }
+		use {
+			'numToStr/Comment.nvim',
+			config = function()
+				require('Comment').setup()
+			end,
+		}
 
 		-- configured in treesitter.lua
 		use {
@@ -109,7 +109,7 @@ function M.setup()
 			end,
 		}
 
-		use { 
+		use {
 			"williamboman/mason.nvim",
 			config = function()
 				require("config.lsp").setup()
@@ -139,7 +139,7 @@ function M.setup()
 			config = function()
 				require("config.cmp").setup()
 			end,
-			wants = {  "LuaSnip", },
+			wants = { "LuaSnip", },
 			requires = {
 				"hrsh7th/cmp-buffer",
 				"hrsh7th/cmp-path",
@@ -179,7 +179,7 @@ function M.setup()
 		use {
 			'nvim-telescope/telescope.nvim',
 			tag = '0.1.0',
-			requires = { {'nvim-lua/plenary.nvim'} },
+			requires = { { 'nvim-lua/plenary.nvim' } },
 			config = function()
 				require("config.telescope").setup()
 			end
@@ -222,7 +222,7 @@ function M.setup()
 				"neovim/nvim-lspconfig",
 				"SmiteshP/nvim-navic",
 				"MunifTanjim/nui.nvim",
-				"numToStr/Comment.nvim",        -- Optional
+				"numToStr/Comment.nvim", -- Optional
 				"nvim-telescope/telescope.nvim" -- Optional
 			},
 			config = function()
@@ -244,7 +244,7 @@ function M.setup()
 	end
 
 	packer_init()
-	
+
 	-- packer.vim configuration
 	local conf = {
 		display = {
