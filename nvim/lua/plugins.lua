@@ -249,6 +249,13 @@ function M.setup()
 			commit = '6e9875711b9d5cefcf77cc6e30dcce53135b9cc5',
 			config = require('config.window_picker').setup
 		}
+
+		use {
+			"simrat39/rust-tools.nvim",
+			config = function()
+				require('config.rust_tools').setup()
+			end
+		}
 	end
 
 	packer_init()
