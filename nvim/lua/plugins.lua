@@ -132,6 +132,9 @@ function M.setup()
 
 		use {
 			"neovim/nvim-lspconfig",
+			requires = {
+				"williamboman/mason-lspconfig.nvim"
+			},
 		}
 
 		use {
