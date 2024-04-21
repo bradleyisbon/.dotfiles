@@ -23,7 +23,6 @@ function M.setup()
 			end
 		end,
 	}
-
 end
 
 return M
