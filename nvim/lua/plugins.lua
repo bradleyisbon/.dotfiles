@@ -135,6 +135,9 @@ function M.setup()
 			requires = {
 				"williamboman/mason-lspconfig.nvim"
 			},
+			config = function()
+				require('config.lspconfig').setup()
+			end
 		}
 
 		use {
