@@ -142,7 +142,7 @@ function M.setup()
 
 		use {
 			"hrsh7th/nvim-cmp",
-			commit = '99ef854322d0de9269044ee197b6c9ca14911d96',
+			-- commit = '99ef854322d0de9269044ee197b6c9ca14911d96',
 			event = "InsertEnter", -- load on entering insert mode
 			opt = true,
 			config = function()
@@ -155,7 +155,7 @@ function M.setup()
 				"hrsh7th/cmp-nvim-lua",
 				{
 					"hrsh7th/cmp-nvim-lsp",
-					commit = "affe808"
+					-- commit = "affe808"
 				},
 				"ray-x/cmp-treesitter",
 				"saadparwaiz1/cmp_luasnip",
