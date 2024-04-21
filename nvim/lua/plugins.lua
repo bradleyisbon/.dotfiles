@@ -180,7 +180,6 @@ function M.setup()
 			"akinsho/toggleterm.nvim",
 			tag = 'v2.*',
 			config = function()
-				print('toggleterm config')
 				require("config.toggleterm").setup()
 			end
 		}
