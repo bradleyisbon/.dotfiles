@@ -7,6 +7,7 @@ local servers = {
 	pyright = {},
 	sumneko_lua = {},
 	tsserver = {},
+	rust_analyzer = {}
 }
 
 local function on_attach(client, bufnr)
