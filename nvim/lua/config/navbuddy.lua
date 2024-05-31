@@ -23,6 +23,18 @@ function M.setup()
 	-- 		navbuddy.attach(client, bufnr)
 	-- 	end
 	-- }
+
+	local whichkey = require("which-key")
+
+	local opts = {
+		prefix = "<leader>"
+	}
+
+	local mappings = {
+		n = {":Navbuddy<CR>", "Navbuddy"}
+	}
+
+	whichkey.register(mappings, opts)
 end
 
 return M
