@@ -13,7 +13,7 @@ function M.setup()
 		local install_path = data_path .. "/site/pack/packer/start/packer.nvim"
 
 		-- if nothing is installed to the install path
-		-- then clone the packer repo 
+		-- then clone the packer repo
 		if fn.empty(fn.glob(install_path)) > 0 then
 			packer_bootstrap = fn.system {
 				"git",
@@ -38,7 +38,7 @@ function M.setup()
 			require("packer").sync()
 		end
 
-		use { 
+		use {
 			"nvim-treesitter/nvim-treesitter",
 			-- commit = "d3ca4de",
 			run = ':TSUpdate',
@@ -59,15 +59,15 @@ function M.setup()
 
 		use {
 			"windwp/nvim-ts-autotag",
-			commit = "fdefe46c6807441460f11f11a167a2baf8e4534b",
+			-- commit = "fdefe46c6807441460f11f11a167a2baf8e4534b",
 		}
 
-		 use {
-		 	'numToStr/Comment.nvim',
-		 	config = function()
-		 		require('Comment').setup()
-		 	end,
-		 }
+		use {
+			'numToStr/Comment.nvim',
+			config = function()
+				require('Comment').setup()
+			end,
+		}
 
 		-- configured in treesitter.lua
 		use {
@@ -109,7 +109,7 @@ function M.setup()
 			end,
 		}
 
-		use { 
+		use {
 			"williamboman/mason.nvim",
 			config = function()
 				require("config.lsp").setup()
@@ -125,28 +125,37 @@ function M.setup()
 
 		use {
 			"williamboman/mason-lspconfig.nvim",
+			requires = {
+				"williamboman/mason.nvim"
+			}
 		}
 
 		use {
 			"neovim/nvim-lspconfig",
+			requires = {
+				"williamboman/mason-lspconfig.nvim"
+			},
+			config = function()
+				require('config.lspconfig').setup()
+			end
 		}
 
 		use {
 			"hrsh7th/nvim-cmp",
-			commit = '99ef854322d0de9269044ee197b6c9ca14911d96',
+			-- commit = '99ef854322d0de9269044ee197b6c9ca14911d96',
 			event = "InsertEnter", -- load on entering insert mode
 			opt = true,
 			config = function()
 				require("config.cmp").setup()
 			end,
-			wants = {  "LuaSnip", },
+			wants = { "LuaSnip", },
 			requires = {
 				"hrsh7th/cmp-buffer",
 				"hrsh7th/cmp-path",
 				"hrsh7th/cmp-nvim-lua",
 				{
 					"hrsh7th/cmp-nvim-lsp",
-					commit = "affe808"
+					-- commit = "affe808"
 				},
 				"ray-x/cmp-treesitter",
 				"saadparwaiz1/cmp_luasnip",
@@ -171,15 +180,14 @@ function M.setup()
 			"akinsho/toggleterm.nvim",
 			tag = 'v2.*',
 			config = function()
-				print('toggleterm config')
 				require("config.toggleterm").setup()
 			end
 		}
 
 		use {
 			'nvim-telescope/telescope.nvim',
-			tag = '0.1.3',
-			requires = { {'nvim-lua/plenary.nvim'} },
+			tag = '0.1.4',
+			requires = { { 'nvim-lua/plenary.nvim' } },
 			config = function()
 				require("config.telescope").setup()
 			end
@@ -208,13 +216,14 @@ function M.setup()
 			end
 		}
 
-		use {
-			"nvim-telescope/telescope-file-browser.nvim",
-			requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-			config = function()
-				require("config.telescope_file_browser").setup()
-			end
-		}
+		-- don't think I like this better than the default
+		-- use {
+		-- 	"nvim-telescope/telescope-file-browser.nvim",
+		-- 	requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+		-- 	config = function()
+		-- 		require("config.telescope_file_browser").setup()
+		-- 	end
+		-- }
 
 		use {
 			"SmiteshP/nvim-navbuddy",
@@ -222,7 +231,7 @@ function M.setup()
 				"neovim/nvim-lspconfig",
 				"SmiteshP/nvim-navic",
 				"MunifTanjim/nui.nvim",
-				"numToStr/Comment.nvim",        -- Optional
+				"numToStr/Comment.nvim", -- Optional
 				"nvim-telescope/telescope.nvim" -- Optional
 			},
 			config = function()
@@ -241,10 +250,22 @@ function M.setup()
 			commit = '6e9875711b9d5cefcf77cc6e30dcce53135b9cc5',
 			config = require('config.window_picker').setup
 		}
+
+		use {
+			"simrat39/rust-tools.nvim",
+			config = function()
+				require('config.rust_tools').setup()
+			end
+		}
+
+		use {
+			"mhartington/formatter.nvim",
+			config = require('config.formatter').setup
+		}
 	end
 
 	packer_init()
-	
+
 	-- packer.vim configuration
 	local conf = {
 		display = {

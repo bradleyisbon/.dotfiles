@@ -9,12 +9,17 @@ setopt auto_cd
 bindkey -v
 bindkey "^R" history-incremental-search-backward
 
+# run history -a at each shell prompt to immediately write to history file
+PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
+
 alias vim="nvim"
 alias v="nvim"
 alias py="cd ~/Projects/bpython-env/bin ; source activate ; bpython ; deactivate ; cd -"
 alias kaf="kubectl apply -f "
 alias kdf="kubectl delete -f "
 alias nv="v ~/.dotfiles/nvim"
+alias kssh="kitty +kitten ssh"
+alias ssa='eval "$(ssh-agent -s)"'
 export EDITOR=nvim
 
 export PYENV_ROOT="$HOME/.pyenv"
@@ -44,3 +49,10 @@ source <(doctl completion zsh)
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# edit command with vim with esc -> v -> e or enter normal mode, visual mode, hit e
+autoload edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd e edit-command-line

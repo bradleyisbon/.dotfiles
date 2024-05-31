@@ -2,7 +2,7 @@ local M = {}
 
 function M.setup()
 	require('nvim-treesitter.configs').setup({
-		ensure_installed = { "lua", "typescript", "tsx", "javascript", "go", "yaml", "hcl", "python"},
+		ensure_installed = { "lua", "typescript", "tsx", "javascript", "go", "yaml", "hcl", "python", "rust" },
 		indent = {
 			enable = true
 		},
@@ -15,20 +15,19 @@ function M.setup()
 		},
 		autotag = {
 			enable = true -- relies on windwp/nvim-ts-autotag
-		},
-		context_commentstring = {
-			enable = true,
-			config = {
-				javascript = {
-					__default = '// %s',
-					jsx_element = '{/* %s */}',
-					jsx_fragment = '{/* %s */}',
-					jsx_attribute = '{/* %s */}',
-					comment = '// %s'
-				}
-			}
 		}
 	})
+	require('ts_context_commentstring').setup {
+		config = {
+			javascript = {
+				__default = '// %s',
+				jsx_element = '{/* %s */}',
+				jsx_fragment = '{/* %s */}',
+				jsx_attribute = '{/* %s */}',
+				comment = '// %s'
+			}
+		}
+	}
 end
 
 return M

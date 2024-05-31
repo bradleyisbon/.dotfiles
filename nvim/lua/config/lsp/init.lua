@@ -7,6 +7,7 @@ local servers = {
 	pyright = {},
 	sumneko_lua = {},
 	tsserver = {},
+	rust_analyzer = {}
 }
 
 local function on_attach(client, bufnr)
@@ -16,7 +17,7 @@ local function on_attach(client, bufnr)
 
 	-- Disable formatting - I'll use null-ls for that - https://stackoverflow.com/a/71671597
 	client.server_capabilities.document_formatting = false
-        client.server_capabilities.document_range_formatting = false
+	client.server_capabilities.document_range_formatting = false
 
 	-- Use LSP as the handler for formatexpr.
 	-- See `:help formatexpr` for more info
@@ -26,7 +27,7 @@ local function on_attach(client, bufnr)
 	require("config.lsp.keymaps").setup(client, bufnr)
 
 	-- Show line diagnostics in hover window
-	vim.o.updatetime = 250  -- time to hold before CursorHold is fired
+	vim.o.updatetime = 250 -- time to hold before CursorHold is fired
 	vim.diagnostic.config({
 		virtual_text = false -- disable line diagnostic
 	})
@@ -68,7 +69,7 @@ function M.setup()
 	require("mason").setup()
 	require("mason-lspconfig").setup()
 	require("mason-lspconfig").setup_handlers({
-		function (server_name)
+		function(server_name)
 			local opts = vim.tbl_deep_extend("force", options, servers[server_name] or {})
 			require("lspconfig")[server_name].setup(opts)
 		end
