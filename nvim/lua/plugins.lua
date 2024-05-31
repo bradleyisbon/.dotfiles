@@ -59,7 +59,7 @@ function M.setup()
 
 		use {
 			"windwp/nvim-ts-autotag",
-			commit = "fdefe46c6807441460f11f11a167a2baf8e4534b",
+			-- commit = "fdefe46c6807441460f11f11a167a2baf8e4534b",
 		}
 
 		use {
@@ -216,13 +216,14 @@ function M.setup()
 			end
 		}
 
-		use {
-			"nvim-telescope/telescope-file-browser.nvim",
-			requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-			config = function()
-				require("config.telescope_file_browser").setup()
-			end
-		}
+		-- don't think I like this better than the default
+		-- use {
+		-- 	"nvim-telescope/telescope-file-browser.nvim",
+		-- 	requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+		-- 	config = function()
+		-- 		require("config.telescope_file_browser").setup()
+		-- 	end
+		-- }
 
 		use {
 			"SmiteshP/nvim-navbuddy",
@@ -255,6 +256,11 @@ function M.setup()
 			config = function()
 				require('config.rust_tools').setup()
 			end
+		}
+
+		use {
+			"mhartington/formatter.nvim",
+			config = require('config.formatter').setup
 		}
 	end
 
