@@ -193,6 +193,8 @@ function M.setup()
 			end
 		}
 
+
+		-- used for formatting but may be redundant with formatter.nvim
 		use {
 			'jose-elias-alvarez/null-ls.nvim',
 			commit = '07d4ed4c6b561914aafd787453a685598bec510f',
@@ -215,15 +217,6 @@ function M.setup()
 				require("config.lualine").setup()
 			end
 		}
-
-		-- don't think I like this better than the default
-		-- use {
-		-- 	"nvim-telescope/telescope-file-browser.nvim",
-		-- 	requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-		-- 	config = function()
-		-- 		require("config.telescope_file_browser").setup()
-		-- 	end
-		-- }
 
 		use {
 			"SmiteshP/nvim-navbuddy",
