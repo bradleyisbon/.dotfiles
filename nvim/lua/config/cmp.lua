@@ -2,9 +2,10 @@ local M = {}
 
 function M.setup()
 	local has_words_before = function()
-		-- 
+		--
 		local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-		return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
+		return col ~= 0 and
+		vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
 	end
 
 	local luasnip = require "luasnip"
@@ -12,6 +13,7 @@ function M.setup()
 
 	-- docs are sparse; use :h {option} to learn more about below options
 	cmp.setup {
+		preselect = cmp.PreselectMode.None, -- https://github.com/hrsh7th/nvim-cmp/blob/5260e5e8ecadaf13e6b82cf867a909f54e15fd07/doc/cmp.txt#L919
 		completion = { completeopt = "menu,menuone,noinsert,noselect", keyword_length = 1 },
 		experimental = { native_menu = false, ghost_text = false },
 		snippet = {
@@ -76,10 +78,12 @@ function M.setup()
 			{ name = "nvim_lua" },
 			{ name = "path" },
 		},
-		window = {documentation = {
-			border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-			winhighlight = "NormalFloat:NormalFloat,FloatBorder:TelescopeBorder",
-		}},
+		window = {
+			documentation = {
+				border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+				winhighlight = "NormalFloat:NormalFloat,FloatBorder:TelescopeBorder",
+			}
+		},
 	}
 
 	-- Use buffer source for "/"
@@ -97,8 +101,6 @@ function M.setup()
 			{ name = "cmdline" }
 		}),
 	})
-
-
 end
 
 return M
