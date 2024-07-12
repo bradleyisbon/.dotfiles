@@ -6,7 +6,7 @@ function M.setup()
 	local null_ls = require('null-ls')
 	null_ls.setup {
 		sources = {
-			null_ls.builtins.formatting.prettier
+			-- null_ls.builtins.formatting.prettier
 		},
 		on_attach = function(client, bufnr)
 			if client.supports_method("textDocument/formatting") then
@@ -15,9 +15,8 @@ function M.setup()
 					group = augroup,
 					buffer = bufnr,
 					callback = function()
-						-- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-						vim.lsp.buf.format()
-						print('formatted!')
+						-- vim.lsp.buf.format()
+						-- print('formatted!')
 					end,
 				})
 			end
