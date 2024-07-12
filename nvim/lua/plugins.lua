@@ -216,15 +216,6 @@ function M.setup()
 			end
 		}
 
-		-- don't think I like this better than the default
-		-- use {
-		-- 	"nvim-telescope/telescope-file-browser.nvim",
-		-- 	requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-		-- 	config = function()
-		-- 		require("config.telescope_file_browser").setup()
-		-- 	end
-		-- }
-
 		use {
 			"SmiteshP/nvim-navbuddy",
 			requires = {
