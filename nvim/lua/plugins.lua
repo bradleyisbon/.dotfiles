@@ -193,15 +193,13 @@ function M.setup()
 			end
 		}
 
-
-		-- used for formatting but may be redundant with formatter.nvim
-		use {
-			'jose-elias-alvarez/null-ls.nvim',
-			commit = '07d4ed4c6b561914aafd787453a685598bec510f',
-			config = function()
-				require("config.null_ls").setup()
-			end
-		}
+		-- use {
+		-- 	'jose-elias-alvarez/null-ls.nvim',
+		-- 	commit = '07d4ed4c6b561914aafd787453a685598bec510f',
+		-- 	config = function()
+		-- 		require("config.null_ls").setup()
+		-- 	end
+		-- }
 
 		use {
 			'Tsuzat/NeoSolarized.nvim',
