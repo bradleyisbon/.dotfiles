@@ -8,7 +8,7 @@ function M.setup()
 		vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
 	end
 
-	local luasnip = require "luasnip"
+	-- local luasnip = require "luasnip"
 	local cmp = require "cmp"
 
 	-- docs are sparse; use :h {option} to learn more about below options
@@ -18,7 +18,7 @@ function M.setup()
 		experimental = { native_menu = false, ghost_text = false },
 		snippet = {
 			expand = function(args)
-				require("luasnip").lsp_expand(args.body)
+				-- require("luasnip").lsp_expand(args.body)
 			end,
 		},
 		formatting = {
@@ -26,7 +26,7 @@ function M.setup()
 				vim_item.menu = ({
 					nvim_lsp = "[LSP]",
 					buffer = "[Buffer]",
-					luasnip = "[Snip]",
+					-- luasnip = "[Snip]",
 					nvim_lua = "[Lua]",
 					treesitter = "[Treesitter]"
 				})[entry.source.name]
@@ -48,8 +48,8 @@ function M.setup()
 				function(fallback)
 					if cmp.visible() then
 						cmp.select_next_item()
-					elseif luasnip.expand_or_jumpable() then
-						luasnip.expand_or_jump()
+					-- elseif luasnip.expand_or_jumpable() then
+					-- 	luasnip.expand_or_jump()
 					elseif has_words_before() then
 						cmp.complete()
 					else
@@ -62,8 +62,8 @@ function M.setup()
 				function(fallback)
 					if cmp.visible() then
 						cmp.select_prev_item()
-					elseif luasnip.jumpable(-1) then
-						luasnip.jump(-1)
+					-- elseif luasnip.jumpable(-1) then
+					-- 	luasnip.jump(-1)
 					else
 						fallback()
 					end
@@ -74,7 +74,7 @@ function M.setup()
 			{ name = "nvim_lsp" },
 			{ name = "treesitter" },
 			{ name = "buffer" },
-			{ name = "luasnip" },
+			-- { name = "luasnip" },
 			{ name = "nvim_lua" },
 			{ name = "path" },
 		},

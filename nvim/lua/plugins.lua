@@ -57,10 +57,12 @@ function M.setup()
 		}
 
 
-		use {
-			"windwp/nvim-ts-autotag",
-			-- commit = "fdefe46c6807441460f11f11a167a2baf8e4534b",
-		}
+		-- this seems to be causing issues with other plugins. possibly just needs to be updated
+		-- to newest version to work with nvim ^10.3
+		-- use {
+		-- 	"windwp/nvim-ts-autotag",
+		-- 	-- commit = "fdefe46c6807441460f11f11a167a2baf8e4534b",
+		-- }
 
 		use {
 			'numToStr/Comment.nvim',
@@ -91,7 +93,7 @@ function M.setup()
 		use {
 			-- uses fd as fuzzy finder; `brew install fd` to install on mac
 			"nvim-neo-tree/neo-tree.nvim",
-			branch = "v2.x", -- ensure no breaking changes
+			-- branch = "v2.x", -- ensure no breaking changes
 			requires = {
 				"nvim-lua/plenary.nvim",
 				"kyazdani42/nvim-web-devicons", -- requires a patched font from www.nerdfonts.com
@@ -107,6 +109,21 @@ function M.setup()
 			config = function()
 				require("config.whichkey").setup()
 			end,
+			requires = {
+				{
+					"echasnovski/mini.icons",
+					config = function()
+						require("config.whichkey").setup()
+					end,
+				}
+			}
+		}
+
+		use {
+			"echasnovski/mini.icons",
+			config = function()
+				require("config.whichkey").setup()
+			end,
 		}
 
 		use {
@@ -118,7 +135,7 @@ function M.setup()
 				"ray-x/lsp_signature.nvim",
 				{
 					"hrsh7th/cmp-nvim-lsp",
-					commit = "affe808",
+					-- commit = "affe808",
 				},
 			}
 		}
@@ -148,7 +165,7 @@ function M.setup()
 			config = function()
 				require("config.cmp").setup()
 			end,
-			wants = { "LuaSnip", },
+			-- wants = { "LuaSnip", },
 			requires = {
 				"hrsh7th/cmp-buffer",
 				"hrsh7th/cmp-path",
@@ -158,13 +175,14 @@ function M.setup()
 					-- commit = "affe808"
 				},
 				"ray-x/cmp-treesitter",
-				"saadparwaiz1/cmp_luasnip",
-				{
-					"L3MON4D3/LuaSnip",
-					config = function()
-						require("config.luasnip").setup()
-					end,
-				},
+				-- "saadparwaiz1/cmp_luasnip",
+				-- {
+				-- 	"L3MON4D3/LuaSnip",
+				-- 	config = function()
+				-- 		require("config.luasnip").setup()
+				-- 	end,
+				-- 	-- run = "make install_jsregexp"
+				-- },
 			},
 			disable = false,
 		}
@@ -238,7 +256,7 @@ function M.setup()
 		use {
 			's1n7ax/nvim-window-picker',
 			-- tag = 'v2.*', locking to commit until statusbar background color fixed
-			commit = '6e9875711b9d5cefcf77cc6e30dcce53135b9cc5',
+			-- commit = '6e9875711b9d5cefcf77cc6e30dcce53135b9cc5',
 			config = require('config.window_picker').setup
 		}
 
@@ -250,10 +268,10 @@ function M.setup()
 		}
 
 		-- removing temporarily because yaml bad
-		-- use {
-		-- 	"mhartington/formatter.nvim",
-		-- 	config = require('config.formatter').setup
-		-- }
+		use {
+			"mhartington/formatter.nvim",
+			config = require('config.formatter').setup
+		}
 	end
 
 	packer_init()

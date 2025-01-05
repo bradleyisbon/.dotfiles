@@ -2,24 +2,15 @@ local M = {}
 
 
 function register_mappings()
-	local opts = {
-		prefix = "<C-w>"
-	}
-
 	function pick_window()
 		vim.fn.win_gotoid(windowpicker.pick_window())
 		print(" ")
 	end
 
-local mappings = 
-  {
-  { "<C-w>p", pick_window, desc = "Pick Window" },
-  }
-	-- local mappings = {
-	-- 	p = {
-	-- 		pick_window, "Pick Window"
-	-- 	}
-	-- }
+	local mappings = 
+	  {
+	  { "<C-w>p", pick_window, desc = "Pick Window" },
+	  }
 
 	require('which-key').add(mappings)
 end
