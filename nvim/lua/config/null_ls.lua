@@ -16,8 +16,8 @@ function M.setup()
 					buffer = bufnr,
 					callback = function()
 						-- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-						vim.lsp.buf.format()
-						print('formatted!')
+						-- vim.lsp.buf.format()
+						-- print('formatted!')
 					end,
 				})
 			end
