@@ -56,3 +56,5 @@ complete -o nospace -C /opt/homebrew/bin/terraform terraform
 autoload edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd e edit-command-line
+
+. "$HOME/.local/bin/env"
