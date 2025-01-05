@@ -14,31 +14,27 @@ function M.setup()
 		prefix = "<leader>"
 	}
 
-	local mappings = {
-		t = {
-			name = "Toggle",
-			l = {":set nu! rnu!<CR>", "Number Lines"},
-			t = {":Neotree toggle<CR>", "File Tree"},
-			h = {":set hlsearch!<CR>", "Highlights"},
-		},
-		d = {
-			name = "Force",
-			c = { ":q!<CR>", "Close Window" },
-			q = { ":qa!<CR>", "Quit All" }
-		},
-		q = {":qa<CR>", "Quit All"},
-		c = {":q<CR>", "Close"},
-		x = {":noh<CR>", "Clear Highlights"},
-		h = {"<C-w>h", "Window Left"},
-		j = {"<C-w>j", "Window Down"},
-		k = {"<C-w>k", "Window Up"},
-		l = {"<C-w>l", "Window Right"},
-		w = {":w<CR>", "Write"},
-		a = {":wa<CR>", "Write All"},
-	}
+	  local mappings = {
+	  { "<leader>a", ":wa<CR>", desc = "Write All" },
+	  { "<leader>c", ":q<CR>", desc = "Close" },
+	  { "<leader>d", group = "Force" },
+	  { "<leader>dc", ":q!<CR>", desc = "Close Window" },
+	  { "<leader>dq", ":qa!<CR>", desc = "Quit All" },
+	  { "<leader>h", "<C-w>h", desc = "Window Left" },
+	  { "<leader>j", "<C-w>j", desc = "Window Down" },
+	  { "<leader>k", "<C-w>k", desc = "Window Up" },
+	  { "<leader>l", "<C-w>l", desc = "Window Right" },
+	  { "<leader>q", ":qa<CR>", desc = "Quit All" },
+	  { "<leader>t", group = "Toggle" },
+	  { "<leader>th", ":set hlsearch!<CR>", desc = "Highlights" },
+	  { "<leader>tl", ":set nu! rnu!<CR>", desc = "Number Lines" },
+	  { "<leader>tt", ":Neotree toggle<CR>", desc = "File Tree" },
+	  { "<leader>w", ":w<CR>", desc = "Write" },
+	  { "<leader>x", ":noh<CR>", desc = "Clear Highlights" },
+	  }
 
 	whichkey.setup(conf)
-	whichkey.register(mappings, opts)
+	whichkey.add(mappings)
 
 end
 

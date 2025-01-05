@@ -29,17 +29,16 @@ function M.setup()
 	-- below is one way of doing that
 	vim.cmd('autocmd! TermOpen term://* lua set_tt_keys()')
 
-	local mappings = {
-		s = {
-			name = "Terminal",
-			t = {":ToggleTerm<CR>", "Toggle"},
-			a = {":ToggleTermToggleAll<CR>", "Toggle All"},
-			n = {function() require("toggleterm.terminal").Terminal:new():toggle() end, "New"},
-			s = {":ToggleTerm", "Select #"},
-			g = {"<cmd>lua _lazygit_toggle()<cr>", "lazygit"}
-		}
-	}
-	require("which-key").register(mappings, { prefix = "<leader>" })
+	  local mappings = {
+	  { "<leader>s", group = "Terminal" },
+	  { "<leader>sa", ":ToggleTermToggleAll<CR>", desc = "Toggle All" },
+	  { "<leader>sg", "<cmd>lua _lazygit_toggle()<cr>", desc = "lazygit" },
+	  { "<leader>sn", function() require("toggleterm.terminal").Terminal:new():toggle() end, desc = "New" },
+	  { "<leader>ss", ":ToggleTerm", desc = "Select #" },
+	  { "<leader>st", ":ToggleTerm<CR>", desc = "Toggle" },
+	  }
+
+	require("which-key").add(mappings)
 end
 
 

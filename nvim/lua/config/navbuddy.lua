@@ -26,15 +26,12 @@ function M.setup()
 
 	local whichkey = require("which-key")
 
-	local opts = {
-		prefix = "<leader>"
-	}
 
 	local mappings = {
-		n = {":Navbuddy<CR>", "Navbuddy"}
-	}
+	  { "<leader>n", ":Navbuddy<CR>", desc = "Navbuddy" },
+	  }
 
-	whichkey.register(mappings, opts)
+	whichkey.add(mappings)
 end
 
 return M

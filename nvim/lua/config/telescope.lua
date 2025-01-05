@@ -3,29 +3,22 @@ local M = {}
 function M.setup()
 	local whichkey = require("which-key")
 
-	local opts = {
-		prefix = "<leader>"
-	}
-
 	local mappings = {
-		f = {
-			name = "Telescope",
-			a = { "<cmd>Telescope<cr>", "All Pickers" },
-			g = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
-			l = { "<cmd>Telescope find_files<cr>", "Find Files" },
-			b = { "<cmd>Telescope buffers<cr>", "Buffers" },
-			f = { "<cmd>Telescope find_files<cr>", "Find Files" },
-			g = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
-			h = { "<cmd>Telescope help_tags<cr>", "Help Tags" },
-			j = { "<cmd>Telescope jumplist<cr>", "Jump List" },
-			m = { "<cmd>Telescope marks", "Marks" },
-			r = { "<cmd>Telescope lsp_references<cr>", "Find References" },
-			s = { "<cmd>Telescope grep_string<cr>", "Find String" },
-			d = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-		}
-	}
+	  { "<leader>f", group = "Telescope" },
+	  { "<leader>fa", "<cmd>Telescope<cr>", desc = "All Pickers" },
+	  { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+	  { "<leader>fd", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Document Symbols" },
+	  { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
+	  { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
+	  { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help Tags" },
+	  { "<leader>fj", "<cmd>Telescope jumplist<cr>", desc = "Jump List" },
+	  { "<leader>fl", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
+	  { "<leader>fm", "<cmd>Telescope marks", desc = "Marks" },
+	  { "<leader>fr", "<cmd>Telescope lsp_references<cr>", desc = "Find References" },
+	  { "<leader>fs", "<cmd>Telescope grep_string<cr>", desc = "Find String" },
+	  }
 
-	whichkey.register(mappings, opts)
+	whichkey.add(mappings)
 
 	require("telescope").setup {
 		-- Default configuration for telescope goes here:

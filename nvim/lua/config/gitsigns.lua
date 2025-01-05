@@ -7,29 +7,19 @@ function M.setup()
 
 	local whichkey = require("which-key")
 
-	local opts = {
-		prefix = "<leader>"
-	}
+	local mappings = 
+	  {
+	  { "<leader>t", group = "Toggle" },
+	  { "<leader>tb", ":Gitsigns toggle_current_line_blame<cr>", desc = "Git Blame" },
+	  }
+	whichkey.add(mappings)
 
-	local mappings = {
-		t = {
-			name = "Toggle",
-			b = {":Gitsigns toggle_current_line_blame<cr>", "Git Blame"}
-		},
-	}
-
-	whichkey.register(mappings, opts)
-
-	opts = {
-		prefix = "g"
-	}
-
-	mappings = {
-		h = {":Gitsigns next_hunk<cr>", "Next Hunk"},
-		H = {":Gitsigns prev_hunk<cr>", "Prev Hunk"}
-	}
-
-	whichkey.register(mappings, opts)
+	mappings = 
+	  {
+	  { "gH", ":Gitsigns prev_hunk<cr>", desc = "Prev Hunk" },
+	  { "gh", ":Gitsigns next_hunk<cr>", desc = "Next Hunk" },
+	  }
+	whichkey.add(mappings)
 end
 
 return M
