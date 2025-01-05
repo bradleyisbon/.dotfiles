@@ -251,10 +251,11 @@ function M.setup()
 			end
 		}
 
-		use {
-			"mhartington/formatter.nvim",
-			config = require('config.formatter').setup
-		}
+		-- removing temporarily because yaml bad
+		-- use {
+		-- 	"mhartington/formatter.nvim",
+		-- 	config = require('config.formatter').setup
+		-- }
 	end
 
 	packer_init()
