@@ -32,6 +32,6 @@ api.nvim_create_autocmd("BufReadPost", {
 
 -- Format on save
 api.nvim_create_autocmd("BufWritePost", {
-	pattern = {"*"},
-	command = "FormatWrite"
+pattern = {"*"},
+command = "FormatWrite"
 })

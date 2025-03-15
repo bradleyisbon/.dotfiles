@@ -59,6 +59,7 @@ function M.setup()
 
 		-- this seems to be causing issues with other plugins. possibly just needs to be updated
 		-- to newest version to work with nvim ^10.3
+		-- update 1/17/25: actually it might be which-key
 		-- use {
 		-- 	"windwp/nvim-ts-autotag",
 		-- 	-- commit = "fdefe46c6807441460f11f11a167a2baf8e4534b",
@@ -72,9 +73,9 @@ function M.setup()
 		}
 
 		-- configured in treesitter.lua
-		use {
-			'JoosepAlviste/nvim-ts-context-commentstring'
-		}
+		-- use {
+			-- 'JoosepAlviste/nvim-ts-context-commentstring'
+		-- }
 
 		use {
 			"kylechui/nvim-surround",
@@ -83,12 +84,12 @@ function M.setup()
 			end,
 		}
 
-		use {
-			'lewis6991/gitsigns.nvim',
-			config = function()
-				require("config.gitsigns").setup()
-			end
-		}
+		-- use {
+		-- 	'lewis6991/gitsigns.nvim',
+		-- 	config = function()
+		-- 		require("config.gitsigns").setup()
+		-- 	end
+		-- }
 
 		use {
 			-- uses fd as fuzzy finder; `brew install fd` to install on mac
@@ -104,107 +105,118 @@ function M.setup()
 			end,
 		}
 
-		use {
-			"folke/which-key.nvim",
-			config = function()
-				require("config.whichkey").setup()
-			end,
-			requires = {
-				{
-					"echasnovski/mini.icons",
-					config = function()
-						require("config.whichkey").setup()
-					end,
-				}
-			}
-		}
+		-- 1/17/25
+		-- it seems like which-key is causing issues with the symptoms:
+		-- - other commands take a long time to run the longer nvim is open
+		-- - either the lsp or nvim-cmp is crashing because suggestions stop working
+		-- I've eliminated most of the other extensions that might be causing the issue by disabling them
+		-- and after disabling which-key I seem to have solved the issue.
+		-- It's possible it's one of my which-key settings that were created for an earlier version of which-key
+		-- use {
+		-- 	"folke/which-key.nvim",
+		-- 	config = function()
+		-- 		require("config.whichkey").setup()
+		-- 	end,
+		-- 	-- requires = {
+		-- 	-- 	{
+		-- 	-- 		"echasnovski/mini.icons",
+		-- 	-- 		config = function()
+		-- 	-- 			require("config.whichkey").setup()
+		-- 	-- 		end,
+		-- 	-- 	}
+		-- 	-- }
+		-- }
 
-		use {
-			"echasnovski/mini.icons",
-			config = function()
-				require("config.whichkey").setup()
-			end,
-		}
+		-- use {
+		-- 	"echasnovski/mini.icons",
+		-- 	config = function()
+		-- 		require("config.whichkey").setup()
+		-- 	end,
+		-- }
 
-		use {
-			"williamboman/mason.nvim",
-			config = function()
-				require("config.lsp").setup()
-			end,
-			requires = {
-				"ray-x/lsp_signature.nvim",
-				{
-					"hrsh7th/cmp-nvim-lsp",
-					-- commit = "affe808",
-				},
-			}
-		}
+		-- disabling for vscode not to be weird; reenable for real nvim
+		-- use {
+		-- 	"williamboman/mason.nvim",
+		-- 	config = function()
+		-- 		require("config.lsp").setup()
+		-- 	end,
+		-- 	requires = {
+		-- 	"neovim/nvim-lspconfig",
+		-- 	"williamboman/mason-lspconfig.nvim",
+		-- 		"ray-x/lsp_signature.nvim",
+		-- 		{
+		-- 			"hrsh7th/cmp-nvim-lsp",
+		-- 			-- commit = "affe808",
+		-- 		},
+		-- 	}
+		-- }
 
-		use {
-			"williamboman/mason-lspconfig.nvim",
-			requires = {
-				"williamboman/mason.nvim"
-			}
-		}
+		-- use {
+		-- 	"williamboman/mason-lspconfig.nvim",
+		-- 	requires = {
+		-- 		"williamboman/mason.nvim"
+		-- 	}
+		-- }
 
-		use {
-			"neovim/nvim-lspconfig",
-			requires = {
-				"williamboman/mason-lspconfig.nvim"
-			},
-			config = function()
-				require('config.lspconfig').setup()
-			end
-		}
+		-- use {
+		-- 	"neovim/nvim-lspconfig",
+		-- 	requires = {
+		-- 		"williamboman/mason-lspconfig.nvim"
+		-- 	},
+		-- 	config = function()
+		-- 		require('config.lspconfig').setup()
+		-- 	end
+		-- }
 
-		use {
-			"hrsh7th/nvim-cmp",
-			-- commit = '99ef854322d0de9269044ee197b6c9ca14911d96',
-			event = "InsertEnter", -- load on entering insert mode
-			opt = true,
-			config = function()
-				require("config.cmp").setup()
-			end,
-			-- wants = { "LuaSnip", },
-			requires = {
-				"hrsh7th/cmp-buffer",
-				"hrsh7th/cmp-path",
-				"hrsh7th/cmp-nvim-lua",
-				{
-					"hrsh7th/cmp-nvim-lsp",
-					-- commit = "affe808"
-				},
-				"ray-x/cmp-treesitter",
-				-- "saadparwaiz1/cmp_luasnip",
-				-- {
-				-- 	"L3MON4D3/LuaSnip",
-				-- 	config = function()
-				-- 		require("config.luasnip").setup()
-				-- 	end,
-				-- 	-- run = "make install_jsregexp"
-				-- },
-			},
-			disable = false,
-		}
+		-- disabling for vscode not to be weird; reenable for real nvim
+		-- use {
+		-- 	"hrsh7th/nvim-cmp",
+		-- 	-- commit = '99ef854322d0de9269044ee197b6c9ca14911d96',
+		-- 	event = "InsertEnter", -- load on entering insert mode
+		-- 	opt = true,
+		-- 	config = function()
+		-- 		require("config.cmp").setup()
+		-- 	end,
+		-- 	-- wants = { "LuaSnip", },
+		-- 	requires = {
+		-- 		-- "hrsh7th/cmp-buffer",
+		-- 		-- "hrsh7th/cmp-path",
+		-- 		-- "hrsh7th/cmp-nvim-lua",
+		-- 		-- {
+		-- 		-- 	"hrsh7th/cmp-nvim-lsp",
+		-- 		-- 	-- commit = "affe808"
+		-- 		-- },
+		-- 		-- "ray-x/cmp-treesitter",
+		-- 		-- "saadparwaiz1/cmp_luasnip",
+		-- 		-- {
+		-- 		-- 	"L3MON4D3/LuaSnip",
+		-- 		-- 	config = function()
+		-- 		-- 		require("config.luasnip").setup()
+		-- 		-- 	end,
+		-- 		-- 	-- run = "make install_jsregexp"
+		-- 		-- },
+		-- 	},
+		-- 	disable = false,
+		-- }
 
-		use {
-			'folke/tokyonight.nvim',
-			config = function()
-				require("config.tokyonight").setup()
-			end
-		}
+		-- use {
+		-- 	'folke/tokyonight.nvim',
+		-- 	config = function()
+		-- 		require("config.tokyonight").setup()
+		-- 	end
+		-- }
 
-		use {
-			"akinsho/toggleterm.nvim",
-			tag = 'v2.*',
-			config = function()
-				require("config.toggleterm").setup()
-			end
-		}
+		-- use {
+		-- 	"akinsho/toggleterm.nvim",
+		-- 	tag = 'v2.*',
+		-- 	config = function()
+		-- 		require("config.toggleterm").setup()
+		-- 	end
+		-- }
 
 		use {
 			'nvim-telescope/telescope.nvim',
-			tag = '0.1.4',
+		-- 	tag = '0.1.4',
 			requires = { { 'nvim-lua/plenary.nvim' } },
 			config = function()
 				require("config.telescope").setup()
@@ -219,55 +231,54 @@ function M.setup()
 		-- 	end
 		-- }
 
-		use {
-			'Tsuzat/NeoSolarized.nvim',
-			config = function()
-				require("config.neosolarized").setup()
-			end
-		}
+		-- use {
+		-- 	'Tsuzat/NeoSolarized.nvim',
+		-- 	config = function()
+		-- 		require("config.neosolarized").setup()
+		-- 	end
+		-- }
 
-		use {
-			'nvim-lualine/lualine.nvim',
-			requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-			config = function()
-				require("config.lualine").setup()
-			end
-		}
+		  use {
+		  	'nvim-lualine/lualine.nvim', -- this must be installed for numToStr/Comment.nvim to work. no idea why.
+		  	requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+		  	config = function()
+		  		require("config.lualine").setup()
+		  	end
+		  }
 
-		use {
-			"SmiteshP/nvim-navbuddy",
-			requires = {
-				"neovim/nvim-lspconfig",
-				"SmiteshP/nvim-navic",
-				"MunifTanjim/nui.nvim",
-				"numToStr/Comment.nvim", -- Optional
-				"nvim-telescope/telescope.nvim" -- Optional
-			},
-			config = function()
-				require("config.navbuddy").setup()
-			end,
-		}
+		-- use {
+		-- 	"SmiteshP/nvim-navbuddy",
+		-- 	requires = {
+		-- 		"neovim/nvim-lspconfig",
+		-- 		"SmiteshP/nvim-navic",
+		-- 		"MunifTanjim/nui.nvim",
+		-- 		"numToStr/Comment.nvim", -- Optional
+		-- 		"nvim-telescope/telescope.nvim" -- Optional
+		-- 	},
+		-- 	config = function()
+		-- 		require("config.navbuddy").setup()
+		-- 	end,
+		-- }
 
 		use {
 			'uloco/bluloco.nvim',
 			requires = { 'rktjmp/lush.nvim' }
 		}
 
-		use {
-			's1n7ax/nvim-window-picker',
-			-- tag = 'v2.*', locking to commit until statusbar background color fixed
-			-- commit = '6e9875711b9d5cefcf77cc6e30dcce53135b9cc5',
-			config = require('config.window_picker').setup
-		}
+		-- use {
+		-- 	's1n7ax/nvim-window-picker',
+		-- 	-- tag = 'v2.*', locking to commit until statusbar background color fixed
+		-- 	-- commit = '6e9875711b9d5cefcf77cc6e30dcce53135b9cc5',
+		-- 	config = require('config.window_picker').setup
+		-- }
 
-		use {
-			"simrat39/rust-tools.nvim",
-			config = function()
-				require('config.rust_tools').setup()
-			end
-		}
+		-- use {
+		-- 	"simrat39/rust-tools.nvim",
+		-- 	config = function()
+		-- 		require('config.rust_tools').setup()
+		-- 	end
+		-- }
 
-		-- removing temporarily because yaml bad
 		use {
 			"mhartington/formatter.nvim",
 			config = require('config.formatter').setup

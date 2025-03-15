@@ -24,14 +24,14 @@ function M.setup()
 	-- 	end
 	-- }
 
-	local whichkey = require("which-key")
-
-
-	local mappings = {
-	  { "<leader>n", ":Navbuddy<CR>", desc = "Navbuddy" },
-	  }
-
-	whichkey.add(mappings)
+	-- local whichkey = require("which-key")
+	--
+	--
+	-- local mappings = {
+	--   { "<leader>n", ":Navbuddy<CR>", desc = "Navbuddy" },
+	--   }
+	--
+	-- whichkey.add(mappings)
 end
 
 return M
